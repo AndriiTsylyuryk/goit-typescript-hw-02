@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, FormEvent } from "react";
 import SearchBar from "./SearchBar/SearchBar";
 import { fetchPhotos } from "../API";
 import { ImageGallery } from "./ImageGallery/ImageGallery";
@@ -10,16 +10,18 @@ import styles from "./App.module.css";
 import ImageModal from "./ImageModal/ImageModal";
 
 const App = () => {
-  const [hits, setHits] = useState([]);
-  const [query, setQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [hits, setHits] = useState<any>([]);
+  const [query, setQuery] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  console.log(selectedPhoto);
 
-  function openModal(photo) {
+  function openModal(photo: any): void {
+    console.log(photo);
     setSelectedPhoto(photo);
     setIsOpen(true);
   }
@@ -36,7 +38,7 @@ const App = () => {
           setIsError(false);
           setIsLoading(true);
           const { data, headers } = await fetchPhotos(query, page);
-          setHits((prev) => [...prev, ...data]);
+          setHits((prev: any) => [...prev, ...data]);
           const totalItems = parseInt(headers["x-total"], 10);
           const perPage = parseInt(headers["x-per-page"], 10);
           setTotalPages(Math.ceil(totalItems / perPage));
@@ -50,7 +52,7 @@ const App = () => {
     }
   }, [query, page]);
 
-  const handleSetQuery = (query) => {
+  const handleSetQuery = (query: string) => {
     setQuery(query);
     setHits([]);
     setPage(1);

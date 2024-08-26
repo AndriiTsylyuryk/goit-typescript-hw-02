@@ -18,6 +18,7 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 const ImageModal = ({ isOpen, onRequestClose, photo }) => {
+
   return (
     <Modal
       isOpen={isOpen}

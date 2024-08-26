@@ -1,14 +1,18 @@
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form, FormikHelpers } from "formik";
 import React from "react";
-import toast from 'react-hot-toast';
-import s from './SearchBar.module.css'
+import toast from "react-hot-toast";
+import s from "./SearchBar.module.css";
+
+interface SearchFormValues {
+  query: string;   
+}
 
 const SearchBar = ({ setQuery }) => {
-  const handleSubmit = (values) => {
+  const handleSubmit = (values: SearchFormValues) => {
     if (values.query) {
       setQuery(values.query);
     } else {
-      toast.error("This didn't work.")
+      toast.error("This didn't work.");
     }
   };
   const initialValues = {
@@ -25,7 +29,9 @@ const SearchBar = ({ setQuery }) => {
             autoFocus
             placeholder="Search images and photos"
           />
-          <button className={s.button} type="submit">Search</button>
+          <button className={s.button} type="submit">
+            Search
+          </button>
         </Form>
       </Formik>
     </div>
