@@ -3,11 +3,15 @@ import React from "react";
 import toast from "react-hot-toast";
 import s from "./SearchBar.module.css";
 
-interface SearchFormValues {
-  query: string;   
+interface SearchBarProps {
+  setQuery: (query: string) => void;
 }
 
-const SearchBar = ({ setQuery }) => {
+interface SearchFormValues {
+  query: string;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ setQuery }) => {
   const handleSubmit = (values: SearchFormValues) => {
     if (values.query) {
       setQuery(values.query);

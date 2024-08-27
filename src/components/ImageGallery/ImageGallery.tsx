@@ -1,13 +1,8 @@
 import React from "react";
 import ImageCard from "../ImageCard/ImageCard";
+import { Photo } from "../../types";
 
-interface Photo {
-  id: string;
-  alt_description: string;
-  urls: {
-    small: string;
-  };
-}
+
 
 interface ImageGalleryProps {
   hits: Photo[];
@@ -18,8 +13,6 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
   hits,
   openModal,
 }) => {
-  console.log(hits);
-
   return (
     <ul>
       {hits.map((photo) => (

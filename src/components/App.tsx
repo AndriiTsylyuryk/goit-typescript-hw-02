@@ -8,6 +8,7 @@ import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import styles from "./App.module.css";
 import ImageModal from "./ImageModal/ImageModal";
+import { Photo } from "../types";
 
 const App = () => {
   const [hits, setHits] = useState<any>([]);
@@ -17,7 +18,7 @@ const App = () => {
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   console.log(selectedPhoto);
 
   function openModal(photo: any): void {

@@ -1,6 +1,10 @@
 import React from "react";
 
-const LoadMoreBtn = ({ setPage }) => {
+interface LoadMoreBtnProps {
+  setPage: (prev: number) => void;
+}
+
+const LoadMoreBtn: React.FC<LoadMoreBtnProps> = ({ setPage }) => {
   return (
     <div>
       <button
